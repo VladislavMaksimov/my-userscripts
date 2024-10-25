@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pretty Small Games
 // @namespace    http://tampermonkey.net/
-// @version      0.0.2
+// @version      0.0.3
 // @description  Improve Small Games old-school UI.
 // @author       Vladislav Maksimov
 // @match        https://small-games.info/*
@@ -35,11 +35,15 @@
   // remove all annoying shit such as ads and so on
   const capitalistShitRemover = new MutationObserver(() => {
     // remove chat's need-to-pay message
-    const chatBroShit = document.querySelector(
-      ".chatbro_messages_history_plug_td"
-    );
-    if (chatBroShit) {
-      chatBroShit.remove();
+    const shitElements = [];
+    shitElements.concat([
+      document.querySelector(".adfinity-overlay"),
+      document.querySelector(".chatbro_messages_history_plug_td"),
+    ]);
+    for (const shitElement of shitElements) {
+      if (shitElement) {
+        shitElement.remove();
+      }
     }
   });
 
