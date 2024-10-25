@@ -32,11 +32,12 @@
           }
       `);
 
-  // remove all annoying shit such as ads and so on
-  const capitalistShitRemover = new MutationObserver(() => {
-    // remove chat's need-to-pay message
+  // remove all annoying async shit such as ads and so on
+  const asyncShitRemover = new MutationObserver(() => {
     let shitElements = [
+      // remove AD bottom banner
       document.querySelector(".adfinity-overlay"),
+      // remove chat's need-to-pay message
       document.querySelector(".chatbro_messages_history_plug_td"),
     ];
     for (const shitElement of shitElements) {
@@ -46,7 +47,7 @@
     }
   });
 
-  capitalistShitRemover.observe(document.body, {
+  asyncShitRemover.observe(document.body, {
     subtree: true,
     childList: true,
   });
